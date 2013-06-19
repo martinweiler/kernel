@@ -73,4 +73,10 @@ public class TestLogMessageFormatter extends TestCase
          return "";
       }
    }
+   
+   public void testSpecialCharacterReplacement() throws Exception{
+      assertEquals("Hello, World $var", LogMessageFormatter.getMessage("Hello, World {}", "$var"));
+      assertEquals("Hello $foo and $bar", LogMessageFormatter.getMessage("Hello {} and {}", "$foo", "$bar"));
+      assertEquals("Counting one, two, three ... to $end", LogMessageFormatter.getMessage("Counting {} to {}", "one, two, three ...", "$end"));
+   }    
 }
